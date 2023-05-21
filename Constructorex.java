@@ -10,22 +10,51 @@ public class Constructorex {
 
         Student s2 = new Student(s1);
         s2.password = "xyz";
+        s1.marks[2] = 100; 
 
-        for (int i=0; i<3; i++) {
+        for(int i=0; i<3; i++) {
             System.out.println(s2.marks[i]);
         }
 
     }
 }
 
-class Animal {
-    String color;
+class Student {
+    String name;
+    int roll;
+    String password;
+    int marks[];
 
-    void eat() {
-        System.out.println("eats");
+    // shallow copy constructor
+    // Student(Student s1) {
+    //     marks = new int[3];
+    //     this.name = s1.name;
+    //     this.roll = s1.roll;
+    //     this.marks = s1.marks;
+    // }
+
+    // deep copy constructor
+    Student(Student s1) {
+        marks = new int[3];
+        this.name = s1.name;
+        this.roll = s1.roll;
+        for(int i=0; i<marks.length; i++) {
+            this.marks[i] = s1.marks[i];
+        }
     }
 
-    void breathe() {
-        Sys
+    Student() {
+        marks = new int[3];
+        System.out.println("constructoe is called..");
+    }
+
+    Student(String name) {
+        marks = new int[3];
+        this.name = name;
+    }
+
+    Student(int roll) {
+        marks = new int[3];
+        this.roll = roll;
     }
 }
